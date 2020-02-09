@@ -4,7 +4,7 @@ let db = require('../db/db.json')
 const fs = require('fs')
 
 const app = express();
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3000;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -21,15 +21,15 @@ app.get('/notes', (_, res) => {
 })
 
 
-// app.get('/', (_, res) => {
-//     res.sendFile(path.join(__dirname, '../public/index.html'), err => {
-//         if (err) {
-//             throw err
-//         } else {
-//             console.log('get /')
-//         }
-//     }) 
-// })
+app.get('/', (_, res) => {
+    res.sendFile(path.join(__dirname, '../public/index.html'), err => {
+        if (err) {
+            throw err
+        } else {
+            console.log('get /')
+        }
+    }) 
+})
 
 
 app.get('/api/notes', (_, res) => {
@@ -42,10 +42,16 @@ app.get('/api/notes', (_, res) => {
     }
 })
 
-app.get('/*/'), (_, res) => {
-    res.sendFile(path.join(__dirname, './public/index.html'))
-    console.log('get /*/')
-}
+// app.get('/*/'), (_, res) => {
+//     res.sendFile(path.join(__dirname, '../public/index.html'), err => {
+//         if (err) {
+//             throw err
+//         }
+
+//         console.log('get /*/')
+//     })
+//     console.log('get /*/')
+// }
 
 // app.post('/api/notes', (req, _) => {
 //   const newChar = req.body;
@@ -79,13 +85,13 @@ app.post('/api/notes', (req, res) => {
     res.status(200)
         .send('Note Updated \n')
     db.push({"id": databaseId(), "title": req.body.title, "text": req.body.text})
-    fs.writeFile(path.join(__dirname, '../db/db.json')), JSON.stringify(db, null, 5), err => {
+    fs.writeFile(path.join(__dirname, '../db/db.json'), JSON.stringify(db, null, 5), err => {
         if (err) {
             throw err
         } else {
             console.log('post /api/notes')
         }
-    }
+    })
 })
 
 

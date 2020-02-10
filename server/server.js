@@ -23,7 +23,7 @@ app.get('/notes', (_, res) => {
 
 
 app.get('/', (_, res) => {
-    res.sendFile(path.join(__dirname, '../public/index.html'), err => {
+    res.sendFile(path.join(__dirname, '..', 'public', 'index.html'), err => {
         if (err) {
             throw err
         } else {

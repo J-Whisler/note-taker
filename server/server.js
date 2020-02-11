@@ -2,7 +2,6 @@ const express = require('express')
 const path = require('path')
 let db = require('../db/db.json')
 const fs = require('fs')
-const heroku = require('heroku')
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -100,7 +99,7 @@ app.delete('/api/notes/:id', (req, res) => {
     
     db = db.filter(num => num.id != req.params.id)
     res.status(200)
-      .send(`${req.params.id} deleted \n`)
+      .send(`Note deleted \n`)
 
       fs.writeFile(path.join(__dirname, `../db/db.json`), JSON.stringify(db, null, 4), err => {
         if (err) {

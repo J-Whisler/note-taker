@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.static(path.join(__dirname, '/public')))
 
 app.get('/notes', (_, res) => {
     res.sendFile(path.join(__dirname, '../public/notes.html'), err => {
@@ -51,7 +51,7 @@ app.get('/api/notes', (_, res) => {
 
 //         console.log('get /*/')
 //     })
-//     console.log('get /*/')
+    
 // }
 
 // app.post('/api/notes', (req, _) => {

@@ -1,1 +1,1 @@
-web: node ../public/assets/js/index.js
+web: node ./server/server.js

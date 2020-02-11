@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static(path.join('../public')))
+app.use(express.static(path.join(__dirname, 'public')))
 
 app.get('/notes', (_, res) => {
     res.sendFile(path.join(__dirname, '../public/notes.html'), err => {
@@ -23,7 +23,7 @@ app.get('/notes', (_, res) => {
 
 
 app.get('/', (_, res) => {
-    res.sendFile(path.join(__dirname, '..', 'public', 'index.html'), err => {
+    res.sendFile(path.join(__dirname, '../public/index.html'), err => {
         if (err) {
             throw err
         } else {
